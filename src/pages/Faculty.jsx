@@ -1,74 +1,91 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Anilsir from "../assets/images/faculty/Anil-sir.jpeg";
-import Anjali from "../assets/images/faculty/Anjali-maam.jpeg";
-import deepti from "../assets/images/faculty/Deepti-maam.jpeg";
-import irin from "../assets/images/faculty/irin.jpg";
-import Monal from "../assets/images/faculty/Monal.jpg";
-import neha from "../assets/images/faculty/Neha.jpeg";
-import poonam from "../assets/images/faculty/poonam.jpg";
-import pretty from "../assets/images/faculty/pretty.jpg";
-import shraddha from "../assets/images/faculty/shraddha.jpg";
-import Swati from "../assets/images/faculty/Swati.jpeg";
-import hod from "../assets/images/faculty/hod.jpg";
-import arti from "../assets/images/faculty/arti.jpg";
-import maam from "../assets/images/faculty/maam.jpg";
 import Footer from "../components/Common/Footer";
 import Navbar from "../components/Common/Navbar";
 export default function Faculty() {
   const mentors = [
-    { name: "Dr.Sanjay Madhukarrao Patil", image: hod, exp: "Professor & HOD" },
-    { name: "Dr.Preeti Nitin Jain", image: pretty, exp: "Assistant Professor" },
+    { name: "Dr.Sanjay Madhukarrao Patil", image: "https://ik.imagekit.io/igsnxowfs/faculty/hod.jpg?updatedAt=1760495359170" , exp: "Professor & HOD" },
+    { name: "Dr.Preeti Nitin Jain", image: "https://ik.imagekit.io/igsnxowfs/faculty/pretty.jpg?updatedAt=1760495358975", exp: "Assistant Professor" },
     {
       name: "Mr.Anil Satyadeo Londhe",
-      image: Anilsir,
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Anil-sir.jpeg?updatedAt=1760495358583",
       exp: "Assistant Professor",
     },
-    {
-      name: "Mrs.Monal Nilesh Malge",
-      image: Monal,
-      exp: "Assistant Professor",
-    },
-    { name: "Mrs.Neha Kunal Kale", image: neha, exp: "Assistant Professor" },
     {
       name: "Mrs. Deepti Jeetu Janjani",
-      image: deepti,
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Deepti-maam.jpeg?updatedAt=1760495358712",
       exp: "Assistant Professor",
     },
+    { name: "Mrs. Anjali Devi Milind Patil", image: "https://ik.imagekit.io/igsnxowfs/faculty/Anjali-maam.jpeg?updatedAt=1760495358743%27%27", exp: "Assistant Professor" },
     {
-      name: "Mrs. Anjali Devi Milind Patil",
-      image: Anjali,
+      name: "Mrs.Irin Anna Solomone",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/irin.jpg?updatedAt=1760495359032" ,
       exp: "Assistant Professor",
     },
-    {
-      name: "Mrs. Irin Anna Solomone",
-      image: irin,
-      exp: "Assistant Professor",
-    },
-
     {
       name: "Mrs. Poonam Amit Kamble",
-      image: poonam,
-      exp: "Assistant Professor",
-    },
-    {
-      name: "Mrs. Shraddha Anant Narhari(Kawji)",
-      image: shraddha,
-      exp: "Assistant Professor",
-    },
-    {
-      name: "Mrs. Amita Priyadarshan Suke",
-      image: maam,
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/poonam.jpg?updatedAt=1760495359116" ,
       exp: "Assistant Professor",
     },
     {
       name: "Mrs. Aarti Raman Sonawane",
-      image: arti,
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/arti.jpg?updatedAt=1760495359178" ,
+      exp: "Assistant Professor",
+    },
+
+    {
+      name: "Mrs.  Swati Sankesh Parhad ",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Swati.jpeg?updatedAt=1760495359013" ,
       exp: "Assistant Professor",
     },
     {
-      name: "Mrs. Swati Sankesh Parhad",
-      image: Swati,
+      name: "Mrs. Aparna Tiwari",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Aparna%20Tiwari.jpg?updatedAt=1760495238311%27",
+      exp: "Assistant Professor",
+    },
+    {
+      name: "Mrs. Sphurti V Atram",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Sphurti_Atram.jpg?updatedAt=1760495237100",
+      exp: "Assistant Professor",
+    },
+    {
+      name: "Mrs. Minakshi Umate",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Minakshi_U.jpg?updatedAt=1760495236676",
+      exp: "Assistant Professor",
+    },
+    {
+      name: "Mrs. Oyendrila Samantha",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Oyendrila_S.jpg?updatedAt=1760495236160",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs. Shubhangi Katke",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Shubhangi_Katke.jpg?updatedAt=1760495236309",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs. Yashika .S.Vadnerkar ",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Yashika_V.jpg?updatedAt=1760495236302",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs. Aruna Divekar",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Aruna_A.jpg?updatedAt=1760495236083",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs.Shikha Singh",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Shikha_s.jpeg?updatedAt=1760495237392",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs. Mridul Saxena",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Mridul_S.jpg?updatedAt=1760495236060",
+      exp: "Assistant Professor",
+    },
+     {
+      name: "Mrs. Aparna Raut",
+      image: "https://ik.imagekit.io/igsnxowfs/faculty/Aparna%20Raut.jpg?updatedAt=1760495235669",
       exp: "Assistant Professor",
     },
   ];
