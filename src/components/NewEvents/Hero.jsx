@@ -14,6 +14,7 @@ const EVENTS = [
         color: "text-purple-400",
         bg: "bg-purple-900",
         border: "border-purple-500",
+        glow: "event-glow-purple",
         description: "Technitude is a high-energy, two-day technical event packed with fun, challenges, and exciting competitions!",
         images: generateImages(12),
         cover: "/api/placeholder/800/800"
@@ -25,6 +26,7 @@ const EVENTS = [
         color: "text-yellow-400",
         bg: "bg-yellow-900",
         border: "border-yellow-500",
+        glow: "event-glow-yellow",
         description: "Milestone is the annual event of our college, bringing together students, faculty, and industry professionals.",
         images: generateImages(12),
         cover: "/api/placeholder/800/800"
@@ -36,6 +38,7 @@ const EVENTS = [
         color: "text-green-400",
         bg: "bg-green-900",
         border: "border-green-500",
+        glow: "event-glow-green",
         description: "A 24-hour hackathon that pushes boundaries. Build, break, and create the future.",
         badge: "COMING SOON",
         images: generateImages(12),
@@ -48,6 +51,7 @@ const EVENTS = [
         color: "text-blue-400",
         bg: "bg-blue-900",
         border: "border-blue-500",
+        glow: "event-glow-blue",
         description: "Hands-on learning sessions where theory meets practice and skills are honed to perfection.",
         images: generateImages(12),
         cover: "/api/placeholder/800/800"
@@ -59,6 +63,7 @@ const EVENTS = [
         color: "text-pink-400",
         bg: "bg-pink-900",
         border: "border-pink-500",
+        glow: "event-glow-pink",
         description: "A community-driven two-day workshop created to encourage learning, innovation, and connection.",
         images: generateImages(12),
         cover: "/api/placeholder/800/800"
@@ -163,11 +168,11 @@ export default function Hero() {
                     <div className="relative h-full flex items-center justify-center w-full">
                         {/* CAROUSEL MODE */}
                         {!isExpanded && (
-                            <div className="relative h-[800px] flex items-center justify-center w-full perspective-[2000px] translate-x-[20%] md:translate-x-[40%]">
+                            <div className="relative h-[600px] md:h-[800px] flex items-center justify-center w-full perspective-[2000px] translate-x-0 md:translate-x-[45%] lg:translate-x-[55%]">
                                 <motion.div
                                     animate={{ rotate: rotation + 180 }}
                                     transition={{ type: "spring", stiffness: 100, damping: 30 }}
-                                    className="relative w-[700px] h-[700px] rounded-full flex items-center justify-center"
+                                    className="relative w-[300px] h-[300px] md:w-[700px] md:h-[700px] rounded-full flex items-center justify-center"
                                     style={{ transformOrigin: "center" }}
                                 >
                                     {/* Decorative ring */}
@@ -176,7 +181,7 @@ export default function Hero() {
                                     {EVENTS.map((event, index) => {
                                         const angle = index * 72;
                                         const rad = (angle * Math.PI) / 180;
-                                        const offsetRadius = 450;
+                                        const offsetRadius = typeof window !== 'undefined' && window.innerWidth < 768 ? 200 : 450;
                                         const x = Math.cos(rad) * offsetRadius;
                                         const y = Math.sin(rad) * offsetRadius;
                                         const isActive = index === activeIndex;
@@ -201,7 +206,7 @@ export default function Hero() {
                                                         <motion.div
                                                             layoutId={`event-bubble-${event.id}`}
                                                             onClick={handleExpand}
-                                                            className={`w-[600px] h-[600px] rounded-full border-2 overflow-hidden cursor-pointer relative group ${event.border}`}
+                                                            className={`w-[280px] h-[280px] md:w-[600px] md:h-[600px] rounded-full border-2 overflow-hidden cursor-pointer relative group ${event.border} ${event.glow} animate-pulse-glow`}
                                                             style={{ borderRadius: "50%" }} // Explicitly enforce circle shape
                                                         >
                                                             {/* Image Background */}

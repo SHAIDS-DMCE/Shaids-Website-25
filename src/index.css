@@ -9,6 +9,7 @@
   font-family: "Gunterz";
   src: url("./assets/fonts/Gunterz-Regular.ttf");
 }
+
 @font-face {
   font-family: "Nord-bold";
   src: url("./assets/fonts/NORD-Bold.ttf");
@@ -19,9 +20,11 @@
   .custom-input {
     @apply border border-[#455668] bg-[#121427] rounded-lg py-2 transition-all;
   }
+
   .custom-input:focus-within {
     @apply border-[#3B82F6];
   }
+
   .custom-input.error {
     @apply border-red-500;
   }
@@ -36,20 +39,50 @@ body {
 
 /* 4. HackHive Animations - Define them here so JSX can use them */
 @keyframes star-pop {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
-  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 @keyframes border-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(168,85,247,0.6), inset 0 0 20px rgba(99,102,241,0.4); }
-  50% { box-shadow: 0 0 30px rgba(168,85,247,0.9), inset 0 0 30px rgba(99,102,241,0.6); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), inset 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.9), inset 0 0 30px rgba(99, 102, 241, 0.6);
+  }
 }
 
 /* 5. Embla Carousel */
-.embla { overflow: hidden; width: 100%; }
-.embla__container { display: flex; transition: transform 0.3s ease-in-out; gap: 16px; }
-.embla__slide { flex: 0 0 auto; border-radius: 16px; }
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 16px;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  border-radius: 16px;
+}
 
 /* New Events Styles */
 :root {
@@ -57,11 +90,42 @@ body {
   --foreground: #ededed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0e17;
-    --foreground: #ededed;
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
   }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.event-glow-purple {
+  box-shadow: 0 0 60px 10px rgba(168, 85, 247, 0.4);
+}
+
+.event-glow-yellow {
+  box-shadow: 0 0 60px 10px rgba(234, 179, 8, 0.4);
+}
+
+.event-glow-green {
+  box-shadow: 0 0 60px 10px rgba(34, 197, 94, 0.4);
+}
+
+.event-glow-blue {
+  box-shadow: 0 0 60px 10px rgba(59, 130, 246, 0.4);
+}
+
+.event-glow-pink {
+  box-shadow: 0 0 60px 10px rgba(236, 72, 153, 0.4);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
 }
 
 /* Merging body styles - taking priorities from new events but keeping existing properties */
