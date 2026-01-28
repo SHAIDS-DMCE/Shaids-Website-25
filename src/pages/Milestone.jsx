@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import Navbar from "../components/Common/Navbar";
-import Footer from "../components/Common/Footer";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 const Milestone = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Milestone = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar show={true}/>
 
       {/* Back Button */}
       <button

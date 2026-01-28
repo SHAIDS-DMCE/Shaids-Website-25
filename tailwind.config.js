@@ -13,6 +13,23 @@ export default {
     },
     extend: {
       colors: {
+        // Background Colors
+        "midnight-navy": "#0B1220",
+        "deep-indigo": "#0F1A2E",
+        "dark-slate-blue": "#101B30",
+        "steel-blue-tint": "#1A2C46",
+        // Brand & Accent Colors
+        "primary-cyan": "#4CC3E6",
+        "soft-aqua": "#6FD7F2",
+        "sky-blue": "#55BFD9",
+        // Icon & Decorative Colors
+        "icon-cyan": "#58C8E8",
+        "light-icon-blue": "#7FD9F2",
+        "decorative-blue": "#4FAFD1",
+        // Text Colors
+        "text-light-blue-gray": "#C7D2E0",
+        "text-muted-blue-gray": "#9FB1C8",
+        "text-soft-slate-blue": "#7A8CA6",
         background: "oklch(var(--background))",
         foreground: "oklch(var(--foreground))",
         card: "oklch(var(--card))",
@@ -56,14 +73,15 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
-        bgGradient: "linear-gradient(71.8deg, #11163E 3.68%, #000000 117.9%)",
+        bgGradient: "linear-gradient(135deg, #0B1220 0%, #0F1A2E 50%, #101B30 100%)",
         buttonGradient:
-          "linear-gradient(180deg, #8133F1 0%, #5C37B6 34.5%, rgba(68, 32, 134, 0.85) 71.5%, #341068 89.5%)",
+          "linear-gradient(180deg, #4CC3E6 0%, #55BFD9 50%, #4FAFD1 100%)",
       },
     },
     animation: {
       "star-movement-bottom": "star-movement-bottom linear infinite alternate",
       "star-movement-top": "star-movement-top linear infinite alternate",
+      float: "float 6s ease-in-out infinite",
     },
     keyframes: {
       "star-movement-bottom": {
@@ -74,6 +92,10 @@ export default {
         "0%": { transform: "translate(0%, 0%)", opacity: "1" },
         "100%": { transform: "translate(100%, 0%)", opacity: "0" },
       },
+      float: {
+  "0%, 100%": { transform: "translateY(0px)" },
+  "50%": { transform: "translateY(-8px)" },
+},
     },
   },
 

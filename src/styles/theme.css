@@ -935,11 +935,7 @@ body {
   text-shadow: 0 0 20px rgba(109, 213, 237, 0.5), 0 0 40px rgba(74, 144, 217, 0.3);
 }
 
-.achievements-letter:hover {
-  animation: letter-bounce 0.4s ease;
-  color: #6dd5ed;
-  text-shadow: 0 0 30px rgba(109, 213, 237, 0.8), 0 0 60px rgba(74, 144, 217, 0.5);
-}
+
 
 .achievements-title-glow {
   position: absolute;

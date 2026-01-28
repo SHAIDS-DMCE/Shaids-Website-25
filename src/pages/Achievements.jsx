@@ -1,5 +1,5 @@
 
-
+import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
 import "../styles/theme.css";
 import { BookOpen, Trophy, Sparkles, Star } from "lucide-react";

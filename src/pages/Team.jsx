@@ -1,98 +1,90 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
-import { useNavigate } from "react-router-dom"; // <-- 1. IMPORTED useNavigate
-import { ArrowLeft } from "lucide-react"; // <-- 2. IMPORTED ArrowLeft
 
-import Footer from "../components/Common/Footer";
-import Navbar from "../components/Common/Navbar";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 import MemberCard from "../components/Teams/MemberCard";
 import teamAnimation from "../assets/animations/team/team-animation.json";
 
-// Import all the leads data from their separate files
 import leads_25_26 from "../data/leads-25-26.js";
 import leads_24_25 from "../data/leads-24-25.js";
-//import leads_23_24 from "../data/leads-23-24.js";
 
 const Team = () => {
   const [selectedYear, setSelectedYear] = useState("25-26");
-  const navigate = useNavigate(); // <-- 3. CALLED THE HOOK
 
-  const getTeamMembers = () => {
-    switch (selectedYear) {
-      case "24-25":
-        return leads_24_25;
-      
-      default:  
-        return leads_25_26;
-    }
-  };
-
-  const teamMembers = getTeamMembers();
-
-  const getButtonClass = (year) => {
-    return selectedYear === year
-      ? "bg-buttonGradient px-6 py-2 rounded-lg text-white font-Outfit text-center cursor-pointer"
-      : "bg-gray-700 px-6 py-2 rounded-lg text-white/80 font-Outfit text-center cursor-pointer hover:bg-gray-600 transition-colors";
-  };
+  const teamMembers =
+    selectedYear === "24-25" ? leads_24_25 : leads_25_26;
 
   return (
-    <>
-      {/* 4. ADDED YOUR BUTTON HERE */}
-      <button 
-        onClick={() => navigate(-1)} 
-        className="fixed top-24 left-8 sm:left-20 z-50 flex items-center text-white hover:text-[#b19eff] transition-colors"
-      >
-        <ArrowLeft className="w-8 h-8 mr-3" />
-        <span className="hidden sm:inline font-semibold text-lg">Back</span>
-      </button>
+    <div className="min-h-screen flex flex-col bg-[#0B1220]">
+      <Navbar show={true} />
 
-      <div className="min-h-screen flex flex-col bg-bgGradient ">
-        <Navbar />
-        <div className="max-w-[1280px] w-full px-4 mx-auto flex flex-col items-center flex-grow mt-10">
-          <div className="w-full flex flex-col lg:flex-row items-center justify-between mb-12">
-            <div className="lg:w-[50%] text-center lg:text-left py-8">
-              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-2 font-NordMedium">
-                MEET THE <br className="hidden lg:block" />
-                <span className="text-[#5D3E98]">TEAM!</span>
-              </h1>
-              <p className="text-white/80 text-xl lg:text-3xl font-Outfit">
-                Our Hive of Innovators
-              </p>
-            </div>
-            <div className="lg:w-[50%] flex justify-center lg:justify-end">
-              <Lottie
-                animationData={teamAnimation}
-                loop={true}
-                className="w-[250px] lg:w-[300px] h-[200px] lg:h-[250px]"
-              />
-            </div>
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1A2C46_0%,transparent_55%)]" />
+
+        <div className="relative max-w-[1280px] mx-auto px-6 pt-16 pb-20 flex flex-col lg:flex-row items-center justify-between">
+          <div className="lg:w-1/2 text-center lg:text-left">
+            <h1 className="text-4xl lg:text-6xl font-bold text-white font-NordMedium">
+              MEET THE <br className="hidden lg:block" />
+              <span className="text-[#4CC3E6]">TEAM!</span>
+            </h1>
+            <p className="mt-4 text-lg lg:text-xl text-[#9FB1C8] font-Outfit max-w-xl">
+              Our Hive of Innovators
+            </p>
           </div>
 
-          <div className="w-full flex mt-4 mb-12 justify-center flex-wrap gap-4">
-            <button
-              onClick={() => setSelectedYear("25-26")}
-              className={getButtonClass("25-26")}
-            >
-              Leads of AY 2025-26
-            </button>
-            <button
-              onClick={() => setSelectedYear("24-25")}
-              className={getButtonClass("24-25")}
-            >
-              Leads of AY 2024-25
-            </button>
-            
+          <div className="lg:w-1/2 flex justify-center lg:justify-end mt-10 lg:mt-0">
+            <Lottie
+              animationData={teamAnimation}
+              loop
+              className="w-[260px] lg:w-[320px]"
+            />
           </div>
-          
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <MemberCard key={index} {...member} />
+        </div>
+      </section>
+
+      {/* YEAR SELECTOR */}
+      <section className="relative z-10">
+        <div className="max-w-[1280px] mx-auto px-6 flex justify-center">
+          <div className="inline-flex bg-white/[0.06] backdrop-blur-md border border-white/[0.12] rounded-full p-1">
+            {["25-26", "24-25"].map((year) => (
+              <button
+                key={year}
+                onClick={() => setSelectedYear(year)}
+                className={`
+                  px-6 py-2 rounded-full text-sm font-medium transition-all
+                  ${
+                    selectedYear === year
+                      ? "bg-[#4CC3E6] text-[#0B1220]"
+                      : "text-[#C7D2E0] hover:text-white"
+                  }
+                `}
+              >
+                AY {year}
+              </button>
             ))}
           </div>
         </div>
-        <Footer />
-      </div>
-    </>
+      </section>
+
+      {/* TEAM GRID */}
+      <section className="relative flex-grow mt-16">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#1A2C46_0%,transparent_60%)]" />
+
+        <div className="relative max-w-[1280px] mx-auto px-6">
+          <div className="bg-[#0F1A2E]/80 backdrop-blur-xl border border-white/[0.08] rounded-3xl px-6 py-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+              {teamMembers.map((member, index) => (
+                <MemberCard key={index} {...member} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { ArrowLeft } from "lucide-react"; // ✅ Added missing import
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Common/Footer";
-import Navbar from "../components/Common/Navbar";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 export default function Faculty() {
   const navigate = useNavigate();
@@ -15,8 +15,8 @@ export default function Faculty() {
     { name: "Mrs. Anjali Devi Milind Patil", image: "https://ik.imagekit.io/igsnxowfs/faculty/Anjali-maam.jpeg?updatedAt=1760495358743", exp: "Assistant Professor" },
     { name: "Mrs. Irin Anna Solomone", image: "https://ik.imagekit.io/igsnxowfs/faculty/irin.jpg?updatedAt=1760495359032", exp: "Assistant Professor" },
     { name: "Mrs. Poonam Amit Kamble", image: "https://ik.imagekit.io/igsnxowfs/faculty/poonam.jpg?updatedAt=1760495359116", exp: "Assistant Professor" },
-    { name: "Mrs. Aarti Raman Sonawane", image: "https://ik.imagekit.io/igsnxowfs/faculty/arti.jpg?updatedAt=1760495359178", exp: "Assistant Professor" },
-    { name: "Mrs. Swati Sankesh Parhad", image: "https://ik.imagekit.io/igsnxowfs/faculty/Swati.jpeg?updatedAt=1760495359013", exp: "Assistant Professor" },
+    // { name: "Mrs. Aarti Raman Sonawane", image: "https://ik.imagekit.io/igsnxowfs/faculty/arti.jpg?updatedAt=1760495359178", exp: "Assistant Professor" },
+    // { name: "Mrs. Swati Sankesh Parhad", image: "https://ik.imagekit.io/igsnxowfs/faculty/Swati.jpeg?updatedAt=1760495359013", exp: "Assistant Professor" },
     { name: "Mrs. Aparna Tiwari", image: "https://ik.imagekit.io/igsnxowfs/faculty/Aparna%20Tiwari.jpg?updatedAt=1760495238311", exp: "Assistant Professor" },
     { name: "Mrs. Sphurti V Atram", image: "https://ik.imagekit.io/igsnxowfs/faculty/Sphurti_Atram.jpg?updatedAt=1760495237100", exp: "Assistant Professor" },
     { name: "Mrs. Minakshi Umate", image: "https://ik.imagekit.io/igsnxowfs/faculty/Minakshi_U.jpg?updatedAt=1760495236676", exp: "Assistant Professor" },
@@ -31,40 +31,97 @@ export default function Faculty() {
 
   return (
     <>
-      <Navbar />
+      <Navbar show={true} />
 
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
-        className="fixed top-4 left-20 z-50 flex items-center text-white hover:text-[#b19eff] transition-colors"
+        className="fixed top-4 left-20 z-50 flex items-center text-white hover:text-primary-cyan transition-colors"
       >
         <ArrowLeft className="w-8 h-8 mr-3" />
         <span className="hidden sm:inline font-semibold"></span>
       </button>
 
       {/* Faculty Section */}
-      <div className="bg-bgGradient flex flex-col items-center justify-center min-h-screen h-full py-20 px-4">
+      <div className="bg-gradient-to-br from-midnight-navy via-deep-indigo to-dark-slate-blue flex flex-col items-center justify-center min-h-screen h-full py-20 px-4">
         <h1 className="text-white text-3xl md:text-4xl font-NordBold text-center mb-12">
           FACULTY & MENTORS
         </h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 px-4 sm:px-8 md:px-16">
-          {mentors.map((mentor, index) => (
+        {/* Top 3 Faculty - Pyramid Layout */}
+        <div className="flex flex-col items-center justify-center mb-16 w-full">
+          <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center justify-center w-full px-4">
+            {/* Left Faculty - Preeti */}
+            <div className="flex flex-col items-center bg-steel-blue-tint/40 backdrop-blur-sm border border-primary-cyan/30 p-4 rounded-2xl hover:bg-steel-blue-tint/60 hover:border-soft-aqua/60 transition-all duration-300 shadow-lg shadow-primary-cyan/10 w-full max-w-xs order-2 md:order-1">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-soft-aqua shadow-lg shadow-soft-aqua/50">
+                <img
+                  src={mentors[1].image}
+                  alt={mentors[1].name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h6 className="mt-3 text-white text-sm sm:text-base text-center font-semibold leading-tight">
+                {mentors[1].name}
+              </h6>
+              <p className="mt-1 text-xs sm:text-sm text-text-light-blue-gray text-center">
+                {mentors[1].exp}
+              </p>
+            </div>
+
+            {/* Center Faculty - HOD */}
+            <div className="flex flex-col items-center bg-steel-blue-tint/40 backdrop-blur-sm border border-primary-cyan/30 p-4 rounded-2xl hover:bg-steel-blue-tint/60 hover:border-soft-aqua/60 transition-all duration-300 shadow-lg shadow-primary-cyan/10 w-full max-w-xs order-1 md:order-2 md:-translate-y-8">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-soft-aqua shadow-lg shadow-soft-aqua/50">
+                <img
+                  src={mentors[0].image}
+                  alt={mentors[0].name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h6 className="mt-3 text-white text-sm sm:text-base text-center font-semibold leading-tight">
+                {mentors[0].name}
+              </h6>
+              <p className="mt-1 text-xs sm:text-sm text-text-light-blue-gray text-center">
+                {mentors[0].exp}
+              </p>
+            </div>
+
+            {/* Right Faculty - Anil */}
+            <div className="flex flex-col items-center bg-steel-blue-tint/40 backdrop-blur-sm border border-primary-cyan/30 p-4 rounded-2xl hover:bg-steel-blue-tint/60 hover:border-soft-aqua/60 transition-all duration-300 shadow-lg shadow-primary-cyan/10 w-full max-w-xs order-3">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-soft-aqua shadow-lg shadow-soft-aqua/50">
+                <img
+                  src={mentors[2].image}
+                  alt={mentors[2].name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h6 className="mt-3 text-white text-sm sm:text-base text-center font-semibold leading-tight">
+                {mentors[2].name}
+              </h6>
+              <p className="mt-1 text-xs sm:text-sm text-text-light-blue-gray text-center">
+                {mentors[2].exp}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Remaining Faculty in Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 px-4 sm:px-8 md:px-12 lg:px-16 w-full">
+          {mentors.slice(3).map((mentor, index) => (
             <div
-              key={index}
-              className="flex flex-col items-center bg-[#1b1530]/50 p-4 rounded-2xl hover:scale-105 transition-transform duration-300"
+              key={index + 3}
+              className="flex flex-col items-center bg-steel-blue-tint/40 backdrop-blur-sm border border-primary-cyan/30 p-4 rounded-2xl hover:bg-steel-blue-tint/60 hover:border-soft-aqua/60 transition-all duration-300 shadow-lg shadow-primary-cyan/10 h-full"
             >
-              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-[#A576DF]/50 shadow-lg">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-soft-aqua shadow-lg shadow-soft-aqua/50 flex-shrink-0">
                 <img
                   src={mentor.image}
                   alt={mentor.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h6 className="mt-3 text-white text-sm sm:text-base text-center font-semibold">
+              <h6 className="mt-3 text-white text-sm sm:text-base text-center font-semibold leading-tight">
                 {mentor.name}
               </h6>
-              <p className="text-xs sm:text-sm text-[#bba7e6] text-center">
+              <p className="mt-1 text-xs sm:text-sm text-text-light-blue-gray text-center">
                 {mentor.exp}
               </p>
             </div>

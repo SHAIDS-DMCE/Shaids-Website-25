@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-import Footer from "../components/Common/Footer";
-import Navbar from "../components/Common/Navbar";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 const Technitude = () => {
   const reelURL =
@@ -32,7 +32,7 @@ const Technitude = () => {
   
   return (
     <>
-    <Navbar/>
+    <Navbar show={true}/>
     {/* Back Button to Events Page */}
       <button
         onClick={() => navigate("/events")}

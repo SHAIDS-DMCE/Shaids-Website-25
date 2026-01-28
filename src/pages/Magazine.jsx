@@ -64,16 +64,8 @@ export default function MagazinePage() {
                     </div>
 
                     <h1 className="opacity-0 animate-fade-in-up delay-200 text-5xl sm:text-6xl font-extrabold tracking-tight mb-6 relative">
-                        <span className="achievements-title">
-                            {"MAGAZINE".split("").map((char, i) => (
-                                <span
-                                    key={i}
-                                    className="achievements-letter"
-                                    style={{ animationDelay: `${0.3 + i * 0.04}s` }}
-                                >
-                                    {char}
-                                </span>
-                            ))}
+                        <span className="achievements-title achievements-letter">
+                            MAGAZINE
                         </span>
                         <div className="achievements-title-glow" />
                     </h1>

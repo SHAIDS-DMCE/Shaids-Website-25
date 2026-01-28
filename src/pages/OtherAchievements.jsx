@@ -123,27 +123,8 @@ export default function OtherAchievementsPage() {
                     </div>
 
                     <h1 className="opacity-0 animate-fade-in-up delay-200 text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 relative">
-                        <span className="achievements-title">
-                            {"OTHER".split("").map((char, i) => (
-                                <span
-                                    key={i}
-                                    className="achievements-letter"
-                                    style={{ animationDelay: `${0.3 + i * 0.04}s` }}
-                                >
-                                    {char}
-                                </span>
-                            ))}
-                            <span className="w-full sm:w-auto sm:inline-block block" />
-                            <span className="hidden sm:inline achievements-letter" style={{ animationDelay: "0.5s" }}>&nbsp;</span>
-                            {"ACHIEVEMENTS".split("").map((char, i) => (
-                                <span
-                                    key={`a-${i}`}
-                                    className="achievements-letter"
-                                    style={{ animationDelay: `${0.52 + i * 0.04}s` }}
-                                >
-                                    {char}
-                                </span>
-                            ))}
+                        <span className="achievements-title achievements-letter">
+                            OTHER ACHIEVEMENTS
                         </span>
                         <div className="achievements-title-glow" />
                     </h1>

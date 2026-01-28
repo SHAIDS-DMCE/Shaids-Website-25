@@ -13,6 +13,7 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Academics from "./pages/Academics.jsx";
 import Hackathon from "./pages/Hackathon.jsx";
 import Problems from "./pages/Problems.jsx";
+import { AboutPage } from "./pages/AboutPage.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter basename="/">
@@ -31,7 +32,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/workshop" element={<Wrkshop />} />
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/credits" element={<Credits />} />
-        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/about-us" element={<AboutPage />} />
         <Route path="/academics" element={<Academics />} />
       </Routes>
     </BrowserRouter>

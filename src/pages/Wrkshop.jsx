@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-import Footer from "../components/Common/Footer";
-import Navbar from "../components/Common/Navbar";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 const Wrkshop = () => {
   const [year, setYear] = useState(2024);
@@ -44,7 +44,7 @@ const Wrkshop = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar show={true} />
 
       {/* Back Button to Events Page */}
       <button
