@@ -42,7 +42,7 @@ export default function Hackathon() {
     const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
     const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
     const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
-gfhdfh
+
     return { days, hours, minutes, seconds };
   };
   const sponser = {
