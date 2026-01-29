@@ -1,4 +1,4 @@
-dev/swaravaj_event-page
+// dev/swaravaj_event-page
 import React from "react";
 import "react-multi-carousel/lib/styles.css";
 import EventButton from "../components/Events/EventButton1";
