@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import { Suspense, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Experience } from "../components/Magzine/Experience";
+import { UI } from "../components/Magzine/UI";
 import "../styles/theme.css";
 import {
   ArrowLeft,
@@ -52,10 +56,35 @@ const features = [
 ];
 
 export default function MagazinePage() {
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <>
       <Navbar show={true} />
       <div className="min-h-screen navy-gradient relative overflow-hidden">
+        {showPreview && (
+          <div className="fixed inset-0 z-[100] bg-[#020617]">
+            <button
+              onClick={() => setShowPreview(false)}
+              className="fixed top-8 left-8 z-[110] flex items-center gap-2 text-white/60 hover:text-white transition-colors bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/10"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Magazine</span>
+            </button>
+            <UI />
+            <Canvas
+              shadows
+              camera={{
+                position: [-0.5, 1, 4],
+                fov: 45,
+              }}
+            >
+              <Suspense fallback={null}>
+                <Experience />
+              </Suspense>
+            </Canvas>
+          </div>
+        )}
         <div className="grain-overlay" />
 
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#4a90d9]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -114,16 +143,24 @@ export default function MagazinePage() {
                   each academic session.
                 </p>
               </div>
-              <div className="w-full lg:w-80 h-56 glass-card bg-gradient-to-br from-[#4a90d9]/20 to-[#6dd5ed]/10 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="animate-icon-float">
-                    <BookOpen className="w-16 h-16 text-[#6dd5ed]/60 mx-auto mb-4 animate-icon-pulse" />
+                <div className="w-full lg:w-80 glass-card bg-gradient-to-br from-[#4a90d9]/20 to-[#6dd5ed]/10 p-8 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="animate-icon-float mb-4">
+                      <BookOpen className="w-16 h-16 text-[#6dd5ed]/60 mx-auto animate-icon-pulse" />
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      <button
+                        onClick={() => setShowPreview(true)}
+                        className="px-6 py-2.5 bg-[#6dd5ed] text-[#020617] font-bold rounded-lg hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(109,213,237,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:-translate-y-1"
+                      >
+                        Last Year Preview
+                      </button>
+                      <span className="text-gray-500 text-xs">
+                        Interactive 3D Edition
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-gray-500 text-sm">
-                    Latest Edition Preview
-                  </span>
                 </div>
-              </div>
             </div>
           </div>
 
@@ -177,6 +214,6 @@ export default function MagazinePage() {
         </div>
       </div>
       <Footer />
-    </>
-  );
+      </>
+    );
 }

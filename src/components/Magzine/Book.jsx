@@ -16,8 +16,8 @@ import {
   Uint16BufferAttribute,
   Vector3,
 } from "three";
-import { degToRad } from "three/src/math/MathUtils.js";
 import { pageAtom, pages } from "./UI";
+const { degToRad } = MathUtils;
 
 const easingFactor = 0.5; // Controls the speed of the easing
 const easingFactorFold = 0.3; // Controls the speed of the easing
@@ -86,19 +86,17 @@ const pageMaterials = [
 ];
 
 pages.forEach((page) => {
-  useTexture.preload(`/textures/${page.front}.jpg`);
-  useTexture.preload(`/textures/${page.back}.jpg`);
-  useTexture.preload(`/textures/book-cover-roughness.jpg`);
+  useTexture.preload(page.front);
+  useTexture.preload(page.back);
 });
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
-  const [picture, picture2, pictureRoughness] = useTexture([
-    `/textures/${front}.jpg`,
-    `/textures/${back}.jpg`,
-    ...(number === 0 || number === pages.length - 1
-      ? [`/textures/book-cover-roughness.jpg`]
-      : []),
-  ]);
+  const [, setPage] = useAtom(pageAtom);
+  const [highlighted, setHighlighted] = useState(false);
+  useCursor(highlighted);
+
+  const textures = [front, back];
+  const [picture, picture2] = useTexture(textures);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef();
   const turnedAt = useRef(0);
@@ -156,9 +154,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         : new MeshStandardMaterial({
             color: whiteColor,
             map: picture2,
-            ...(number === pages.length - 1
-              ? { roughnessMap: pictureRoughness }
-              : { roughness: 0.1 }),
+            roughness: 0.1,
             emissive: emissiveColor,
             emissiveIntensity: 0,
           }),
@@ -243,10 +239,6 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
       );
     }
   });
-
-  const [_, setPage] = useAtom(pageAtom);
-  const [highlighted, setHighlighted] = useState(false);
-  useCursor(highlighted);
 
   return (
     <group
